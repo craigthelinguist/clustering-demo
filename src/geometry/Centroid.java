@@ -20,14 +20,12 @@ public class Centroid extends Circle {
 	// ------------------------------------------------
 	@Override
 	public void draw(Graphics g) {
-		int x = this.getX() - RADIUS/2;
-		int y = this.getY() - RADIUS/2;
-		g.setColor(colour);
-		g.fillOval(x, y, RADIUS, RADIUS);
-		for (int i = 0; i < 3; i++){
-			g.setColor(Color.BLACK);
-			g.fillOval(x+i, y+i, RADIUS-2*i, RADIUS-2*i);
-		}
+		super.draw(g);
+		int x = this.getX();
+		int y = this.getY();
+		g.setColor(Color.BLACK);
+		g.drawLine(x, y-RADIUS, x, y+RADIUS);
+		g.drawLine(x-RADIUS, y, x+RADIUS, y);
 	}
 	
 	public Color getColour(){

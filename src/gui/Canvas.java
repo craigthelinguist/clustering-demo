@@ -4,6 +4,7 @@ import geometry.Centroid;
 import geometry.Point;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.List;
 
@@ -11,6 +12,11 @@ import javax.swing.JComponent;
 
 public class Canvas extends JComponent{
 
+	// Constants.
+	// ------------------------------------------------
+	public static final int WIDTH = 800;
+	public static final int HEIGHT = 600;
+	
 	// Fields.
 	// ------------------------------------------------
 	private Controller controller;
@@ -19,6 +25,7 @@ public class Canvas extends JComponent{
 	// ------------------------------------------------
 	public Canvas(Controller controller) {
 		this.controller = controller;
+		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 	}
 
 	// Instance methods.
@@ -36,5 +43,5 @@ public class Canvas extends JComponent{
 			centroid.draw(g);
 		}
 	}
-	
+
 }

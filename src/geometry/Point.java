@@ -17,16 +17,6 @@ public class Point extends Circle {
 
 	// Instance methods.
 	// ------------------------------------------------
-	@Override
-	public void draw(Graphics g) {
-		int x = this.getX();
-		int y = this.getY();
-		g.setColor(getColour());
-		g.fillOval(x, y, RADIUS, RADIUS);
-		g.setColor(Color.BLACK);
-		g.fillOval(x, y, RADIUS, RADIUS);
-	}
-
 	public void setCluster(Centroid newCluster){
 		this.cluster = newCluster;
 	}
