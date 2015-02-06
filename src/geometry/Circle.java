@@ -18,9 +18,16 @@ public abstract class Circle {
 	// Class Methods
 	// ------------------------------------------------
 	public static boolean intersecting(Circle c1, Circle c2){
+		return distance(c1, c2) < 2*RADIUS;
+		//int dx = c1.x - c2.x;
+		//int dy = c1.y - c2.y;
+		//return Math.sqrt(dx*dx + dy*dy) < 2*RADIUS ;
+	}
+	
+	public static double distance(Circle c1, Circle c2){
 		int dx = c1.x - c2.x;
 		int dy = c1.y - c2.y;
-		return Math.sqrt(dx*dx + dy*dy) < 2*RADIUS ;
+		return Math.sqrt(dx*dx + dy*dy);
 	}
 	
 	// Instance methods.

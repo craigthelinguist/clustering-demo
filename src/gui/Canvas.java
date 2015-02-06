@@ -10,6 +10,8 @@ import java.util.List;
 
 import javax.swing.JComponent;
 
+import clustering.World;
+
 public class Canvas extends JComponent{
 
 	// Constants.
@@ -34,14 +36,12 @@ public class Canvas extends JComponent{
 	protected void paintComponent(Graphics g){
 		g.setColor(Color.WHITE);
 		g.fillRect(0,0,getWidth(),getHeight());
-		List<Point> world = controller.getWorld();
-		for (Point pt : world){
-			pt.draw(g);
-		}
-		List<Centroid> centroids = controller.getCentroids();
-		for (Centroid centroid : centroids){
-			centroid.draw(g);
-		}
+		World world = controller.getWorld();
+		if (world == null) return;
+		List<Point> points = world.getPoints();
+		for (Point pt : points) pt.draw(g);
+		List<Centroid> centroids = world.getCentroids();
+		for (Centroid centroid : centroids) centroid.draw(g);
 	}
 
 }

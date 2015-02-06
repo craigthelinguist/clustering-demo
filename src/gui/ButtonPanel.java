@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,6 +45,8 @@ public class ButtonPanel extends JPanel {
 		GroupLayout.SequentialGroup vertical = gl.createSequentialGroup();
 		gl.setHorizontalGroup(horizontal);
 		gl.setVerticalGroup(vertical);
+		gl.setAutoCreateContainerGaps(true);
+		gl.setAutoCreateGaps(true);
 		
 		// horizontal
 		horizontal.addGroup(
@@ -69,7 +72,7 @@ public class ButtonPanel extends JPanel {
 		JLabel label = new JLabel("Num Pts: ");
 		fieldNumPoints = new JTextField("30");
 		fieldNumPoints.setPreferredSize(new Dimension(10, HEIGHT));
-		//fieldNumPoints.setMaximumSize(new Dimension(10, HEIGHT));
+		fieldNumPoints.setMaximumSize(new Dimension(40, HEIGHT));
 		JButton btnMake = new JButton("Make World");
 		
 		// lisetners
@@ -82,7 +85,7 @@ public class ButtonPanel extends JPanel {
 		
 		// make panel
 		JPanel panel = new JPanel();
-		Dimension dimension = new Dimension((int)gui.getCanvasDimensions().getWidth(), 40);
+		Dimension dimension = new Dimension((int)gui.getCanvasDimensions().getWidth(), 10);
 		panel.setPreferredSize(dimension);
 		
 		// make layout
@@ -90,21 +93,22 @@ public class ButtonPanel extends JPanel {
 		panel.setLayout(gl);
 		GroupLayout.SequentialGroup horizontal = gl.createSequentialGroup();
 		GroupLayout.SequentialGroup vertical = gl.createSequentialGroup();
+		//gl.setAutoCreateContainerGaps(true);
 		gl.setHorizontalGroup(horizontal);
 		gl.setVerticalGroup(vertical);
+		gl.setAutoCreateGaps(true);
 		
 		// horizontal layout
-		horizontal.addGroup(
+		horizontal.addComponent(label);
+		horizontal.addComponent(fieldNumPoints);
+		horizontal.addComponent(btnMake);
+		
+		vertical.addGroup(
 			gl.createParallelGroup()
 				.addComponent(label)
 				.addComponent(fieldNumPoints)
 				.addComponent(btnMake)
 		);
-		
-		// vertical layout
-		vertical.addComponent(label);
-		vertical.addComponent(fieldNumPoints);
-		vertical.addComponent(btnMake);
 		
 		return panel;
 	}
@@ -115,6 +119,7 @@ public class ButtonPanel extends JPanel {
 		JLabel label = new JLabel("Num Clusters: ");
 		fieldNumClusters = new JTextField("5");
 		fieldNumClusters.setPreferredSize(new Dimension(10, HEIGHT));
+		fieldNumClusters.setMaximumSize(new Dimension(40, HEIGHT));
 		JButton btnStart = new JButton("Start");
 		JButton btnStep = new JButton("Step");
 		
@@ -134,7 +139,7 @@ public class ButtonPanel extends JPanel {
 		
 		// make panel
 		JPanel panel = new JPanel();
-		Dimension dimension = new Dimension((int)gui.getCanvasDimensions().getWidth(), 40);
+		Dimension dimension = new Dimension((int)gui.getCanvasDimensions().getWidth(), 10);
 		panel.setPreferredSize(dimension);
 		
 		// make layout
@@ -144,21 +149,21 @@ public class ButtonPanel extends JPanel {
 		GroupLayout.SequentialGroup vertical = gl.createSequentialGroup();
 		gl.setHorizontalGroup(horizontal);
 		gl.setVerticalGroup(vertical);
+		gl.setAutoCreateGaps(true);
 		
 		// horizontal layout
-		horizontal.addGroup(
+		horizontal.addComponent(label);
+		horizontal.addComponent(fieldNumClusters);
+		horizontal.addComponent(btnStart);
+		horizontal.addComponent(btnStep);
+		
+		vertical.addGroup(
 			gl.createParallelGroup()
 				.addComponent(label)
 				.addComponent(fieldNumClusters)
 				.addComponent(btnStart)
 				.addComponent(btnStep)
 		);
-		
-		// vertical layout
-		vertical.addComponent(label);
-		vertical.addComponent(fieldNumClusters);
-		vertical.addComponent(btnStart);
-		vertical.addComponent(btnStep);
 		
 		return panel;
 	}
