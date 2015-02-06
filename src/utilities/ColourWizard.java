@@ -1,4 +1,4 @@
-package tools;
+package utilities;
 
 import java.awt.Color;
 import java.util.HashSet;

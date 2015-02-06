@@ -35,6 +35,7 @@ public class ButtonPanel extends JPanel {
 		this.gui = gui;
 		
 		// components
+		JPanel savePanel = makeSavePanel();
 		JPanel topPanel = makeTopPanel();
 		JPanel botPanel = makeBotPanel();
 		
@@ -51,11 +52,13 @@ public class ButtonPanel extends JPanel {
 		// horizontal
 		horizontal.addGroup(
 			gl.createParallelGroup()
+				.addComponent(savePanel)
 				.addComponent(topPanel)
 				.addComponent(botPanel)
 			);
 		
 		// vertical
+		vertical.addComponent(savePanel);
 		vertical.addComponent(topPanel);
 		vertical.addComponent(botPanel);
 		
@@ -66,6 +69,39 @@ public class ButtonPanel extends JPanel {
 	
 	// Set up methods.
 	// ------------------------------------------------
+	private JPanel makeSavePanel(){
+		
+		// make components
+		JButton btnSave = new JButton("Save Image");
+		btnSave.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.sendEvent(Signal.SAVE_IMAGE);
+			}
+		});
+		
+		// make panel
+		JPanel panel = new JPanel();
+		Dimension dimension = new Dimension(gui.getCanvasDimensions().width, 10);
+		panel.setPreferredSize(dimension);
+		
+		// make layout
+		GroupLayout gl = new GroupLayout(panel);
+		panel.setLayout(gl);
+		GroupLayout.SequentialGroup horizontal = gl.createSequentialGroup();
+		GroupLayout.SequentialGroup vertical = gl.createSequentialGroup();
+		gl.setHorizontalGroup(horizontal);
+		gl.setVerticalGroup(vertical);
+		gl.setAutoCreateGaps(true);
+		
+		// add components
+		horizontal.addComponent(btnSave);
+		vertical.addComponent(btnSave);
+		
+		return panel;
+		
+	}
+	
 	private JPanel makeTopPanel(){
 		
 		// make components
@@ -93,7 +129,6 @@ public class ButtonPanel extends JPanel {
 		panel.setLayout(gl);
 		GroupLayout.SequentialGroup horizontal = gl.createSequentialGroup();
 		GroupLayout.SequentialGroup vertical = gl.createSequentialGroup();
-		//gl.setAutoCreateContainerGaps(true);
 		gl.setHorizontalGroup(horizontal);
 		gl.setVerticalGroup(vertical);
 		gl.setAutoCreateGaps(true);

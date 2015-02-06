@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import tools.ColourWizard;
+import utilities.ColourWizard;
 
 public class World {
 	

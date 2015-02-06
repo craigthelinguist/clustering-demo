@@ -1,5 +1,11 @@
 package gui;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import utilities.ImageSaver;
+
 import clustering.World;
 
 public class Controller {
@@ -24,10 +30,20 @@ public class Controller {
 		case STEP:
 			world.step();
 			break;
+		case SAVE_IMAGE:
+			BufferedImage bi = gui.getImage();
+			File file = gui.selectFileToSave();
+			if (file == null) return;
+			try{
+				ImageSaver.save(bi, file);
+			}
+			catch(IOException ioe){
+				return; //TODO  actual error handling
+			}
+			break;
 		default:
 			throw new IllegalStateException("Unknown signal sent to controller: " + signal);
 		}
-		
 		gui.redraw();
 	}
 	
